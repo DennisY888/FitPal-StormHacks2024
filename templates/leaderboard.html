@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="/static/styles.css" rel="stylesheet">
+        <title>SFU_SURGE_FitPal</title>
+    </head>
+    <body>
+        <p id = "bicep">&#x1F4AA:{{coins}}</p>
+        </div id = "kendrick">
+            <form action="/logout" method="get"  id = "logout" >
+                <input type="submit" value="Logout">
+            </form>
+        </div>
+        <div class="header">
+            <h1><a id = "logo" href = "/">FitPal</a></h1>
+        </div>
+        <div class="containerleaderboard">
+            <!-- <div class="section">
+
+                <h2>Add an entry</h2>
+
+                <form action="/leaderboard" method="post">
+                    <input autocomplete="off" autofocus name="reps" placeholder="Enter Reps" type="number" min="0">
+                    <input autocomplete="off" autofocus name="score" placeholder="Enter Score" type="number" min="0">
+                    <input type="submit" value="Update">
+                </form>
+
+            </div> -->
+            <div class="section1 leaderboard">
+
+                <h2>All-time Leaderboard</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Highest Record</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for user in users %}
+                            <tr>
+                                <td>{{ user[1] }}</td>
+                                <td>reps: {{ user[2] }}</td>
+                                <td>
+                                    <form action="/remove" method="post">
+                                        <input name="id" type="hidden" value="{{ user[0] }}">
+                                        <input type="submit" value="Remove">
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="section1 exercises">
+                <h2>Excercises</h2>
+                <table>
+                    <thead>
+                    </thead>
+    
+                    <tbody>
+                            <tr>
+                                <td>
+                                    <!-- Pushups Button -->
+                                    <form action="/push" method="post"  id = "pushups" >
+                                        <input type="submit" value="Pushups">
+                                    </form>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <!-- Squats Button -->
+                                    <form action="/squat" method="post"  id = "squats" >
+                                        <input type="submit" value="Squats">
+                                    </form>
+                                </td>
+                            </tr>
+                    </tbody>
+                </table>
+                </div>
+    </body>
+</html>
