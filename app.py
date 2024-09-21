@@ -20,9 +20,6 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 
-
-
-
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
@@ -32,8 +29,6 @@ def login_required(f):
     return decorated_function
 
 
-
-
 @app.after_request
 def after_request(response):
     """Ensure responses aren't cached"""
@@ -41,10 +36,6 @@ def after_request(response):
     response.headers["Expires"] = 0
     response.headers["Pragma"] = "no-cache"
     return response
-
-
-
-
 
 
 @app.route("/push", methods=["POST"])
@@ -57,8 +48,6 @@ def push():
         return render_template("apology.html")
     
 
-
-
 @app.route("/squat", methods=["POST"])
 def squat():
     try:
@@ -67,13 +56,6 @@ def squat():
         return redirect("/leaderboard")
     except subprocess.CalledProcessError as e:
         return render_template("apology.html")
-
-
-
-
-
-
-
 
 
 
@@ -111,7 +93,6 @@ def login():
     
 
 
-
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -145,7 +126,6 @@ def register():
 
 
     
-
 @app.route("/logout")
 @login_required
 def logout():
@@ -191,10 +171,6 @@ def leaderboard():
                 return render_template("leaderboard.html", users=rows, coins=total_reps[0])
             else:
                 return render_template("leaderboard.html", users=rows, coins=0)
-
-        
-
-
 
 
 @app.route("/remove", methods=["POST"])
